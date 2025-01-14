@@ -1,0 +1,229 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Chami">
+    <meta name="description" content="HUB de MC">
+    <link rel="icon" href="https://www.minecraft.net/etc.clientlibs/minecraftnet/clientlibs/clientlib-site/resources/favicon.ico" type="image/png">
+    <title>Minecraft Hub</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #04253a, #0b3a56);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            user-select: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            width: 250px;
+            height: 210px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        .game-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .game-header img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .game-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .details {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            border: none;
+            padding: 1px 1px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+            position: relative;
+            top: -40px;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 0, 255, 0.1);
+            transform: scale(1.2);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+            /* Efecto de clic */
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .cabeza {
+            position: relative;
+            top: -31px;
+        }
+
+        .fondo {
+            background-image: url('https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .back {
+            position: fixed;
+            top: 0px;
+            left: -100%;
+            background-color: gray;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            animation: slideIn 1s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes slideIn {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        .creditos {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        .youtubers {
+            width: 30px;
+            border-radius: 100%;
+            position: relative;
+            transition: transform 0.3s ease, width 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .youtubers:hover {
+            width: 40px;
+            transform: rotate(10deg);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 800px) {
+            .container-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fondo"></div>
+    <a href="https://chamidev.github.io/" class="back">
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <lord-icon src="https://cdn.lordicon.com/tfwhvbiq.json" trigger="in" delay="100" state="in-reveal" colors="primary:#e4e4e4,secondary:#121331" style="width:50px;height:50px">
+        </lord-icon>
+    </a>
+
+    <div class="container" onclick="window.location.href='https://chamidev.github.io/MCBE/'">
+        <div class="game-header">
+            <img class="cabeza" src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Play_With_Friends_Online_672x360.png" alt="Minecraft">
+            <h1>Minecraft Bedrock</h1>
+            <p class="details">Descargar Gratis</p>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='https://chamidev.github.io/MC/'">
+        <div class="game-header">
+            <img class="cabeza" src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Play_With_Friends_Local_672x360.png" alt="Minecraft">
+            <h1>Minecraft</h1>
+            <p class="details">La Guia Definitiva</p>
+        </div>
+    </div>
+    <div class="container" onclick="window.location.href='https://chamidev.github.io/Realm/'">
+        <div class="game-header">
+            <img class="cabeza" src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Play_With_Friends_Realms_672x360.png" alt="Minecraft">
+            <h1>CHAI REALM</h1>
+            <p class="details">REALM PRIVADO<br>Exclusiva para Bedrock</p>
+        </div>
+    </div>
+
+    <div class="creditos">
+        Agradecimientos especiales<br>
+        <a href="https://www.youtube.com/@soymiguelgamer" style="color: cyan;"><img class="youtubers" src="https://yt3.googleusercontent.com/60AFL1eXXE7kuYeeZpLW5iGqHD7Xekjsedc3ubMEWw8lMEnfaytFd-ldNI3Q9TrgJiVfe65j=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@ElGera" style="color: red;"><img class="youtubers" src="https://yt3.googleusercontent.com/A8rhzbI3Cs6likMwXszhuWxMi2h1IRcB73p1LxA1jhM9e_LC5i6NrOyQ99On2ckHLTpymwgOUg=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@mrhugod" style="color: green;"><img class="youtubers" src="https://yt3.googleusercontent.com/gaS64GTK9cBEyE9Plcl7flfDXmzpEgDz2QOOXs5B-4aIX4OfYVCMjOUvcKCivNsr4tEkz8gVzv0=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@wa99rriormc" style="color: red;"><img class="youtubers" src="https://yt3.googleusercontent.com/C4LBU4648-LHxaTwEvK1Fhe43sAOD6yFtNnYPckyARMMHD0Smz5K79dJwbxhdLHhQ5ADwh9Twg=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@BobicraftMC" style="color: gray;"><img class="youtubers" src="https://yt3.googleusercontent.com/vQosRxVIK2oO3skrnDtDcybXjjbX5JB1jqBTTUzxk81zZfuJ7sxC2j7QyrQ4qma-9qmuhDecOg=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@GonzzaCanalOficial" style="color: gray;"><img class="youtubers" src="https://yt3.googleusercontent.com/zls_thij0O5F6epDkpKhb6v76ZIz2E9QZ9zvi15jyFC8ssxquvt58pfqY2N_1k0tjavflT-y7g=s160-c-k-c0x00ffffff-no-rj"></a>
+        <a href="https://www.youtube.com/@planet-minecraft" style="color: gray;"><img class="youtubers" src="https://yt3.googleusercontent.com/bRSJ6NoCX5QhzcWRTOjlEHrUH2WW65t9mhfCgP-N9pq1UOvwteY6H7KzVmuy0erMgixEeoL6=s160-c-k-c0x00ffffff-no-rj"></a>
+    </div>
+</body>
+
+</html>
