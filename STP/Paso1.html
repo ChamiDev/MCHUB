@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimensionar Imagen (Ampliando Píxeles)</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #04253a, #0b3a56);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        user-select: none;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .fondo {
+        background-image: url('https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px);
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <div class="fondo"></div>
+    <h2>Sube una imagen de 64x64 px</h2>
+    <input type="file" id="imageUpload" accept="image/*" onchange="processImage(event)">
+    <br>
+    <canvas id="canvas" style="border:1px solid black; margin-top:20px;"></canvas>
+    <br>
+    <button id="downloadBtn" style="margin-top:20px; display:none;" onclick="downloadImage()">Descargar Imagen</button>
+
+    <script>
+        let outputCanvas;
+
+        function processImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = new Image();
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    img.onload = function() {
+                        // Crear un canvas para procesar la imagen
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+
+                        // Obtener los píxeles de la imagen
+                        const imageData = ctx.getImageData(0, 0, img.width, img.height);
+                        const data = imageData.data;
+
+                        // Crear un canvas de 640x640 px para mostrar la imagen ampliada
+                        outputCanvas = document.getElementById('canvas');
+                        const outputCtx = outputCanvas.getContext('2d');
+                        outputCanvas.width = img.width * 10;
+                        outputCanvas.height = img.height * 10;
+
+                        // Dibujar la imagen ampliada píxel por píxel
+                        for (let y = 0; y < img.height; y++) {
+                            for (let x = 0; x < img.width; x++) {
+                                const index = (y * img.width + x) * 4;
+                                const r = data[index];
+                                const g = data[index + 1];
+                                const b = data[index + 2];
+                                const a = data[index + 3];
+
+                                // Ampliar el píxel por un factor de 10
+                                outputCtx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a / 255})`;
+                                outputCtx.fillRect(x * 10, y * 10, 10, 10); // Cada píxel ampliado 10x
+                            }
+                        }
+
+                        // Mostrar el botón de descarga
+                        document.getElementById('downloadBtn').style.display = 'inline';
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'skinHD.png';
+            link.href = outputCanvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+
+</html>

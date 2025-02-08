@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasos Minecraft</title>
+    <style>
+        .fondo {
+            background-image: url('https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #04253a, #0b3a56);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            user-select: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: #0b3a56;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #04253a;
+        }
+
+        .back {
+            position: fixed;
+            top: 0px;
+            left: -100%;
+            background-color: gray;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            animation: slideIn 1s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes slideIn {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fondo"></div>
+    <a href="https://chamidev.github.io/" class="back">
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <lord-icon src="https://cdn.lordicon.com/tfwhvbiq.json" trigger="in" delay="100" state="in-reveal" colors="primary:#e4e4e4,secondary:#121331" style="width:50px;height:50px">
+        </lord-icon>
+    </a>
+
+    <div class="container">
+        <button id="btnPaso1" class="btn">Paso 1: Subir Skin</button>
+        <button id="btnPaso2" class="btn">Paso 2: Obtener Rostro</button>
+        <button id="btnPaso3" class="btn">Paso 3: Subir Calidad Rostro</button>
+    </div>
+
+    <script>
+        // Abrir ventanas emergentes con los enlaces o contenidos respectivos
+        document.getElementById('btnPaso1').addEventListener('click', () => {
+            window.open('Paso1.html', '_blank', 'width=800,height=600');
+        });
+
+        document.getElementById('btnPaso2').addEventListener('click', () => {
+            window.open('Paso2.html', '_blank', 'width=800,height=600');
+        });
+
+        document.getElementById('btnPaso3').addEventListener('click', () => {
+            window.open('Paso3.html', '_blank', 'width=800,height=600');
+        });
+    </script>
+
+</body>
+</html>
